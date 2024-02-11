@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JSON Chronological Sorter</title>
+</head>
+
+<body>
+    <h1>JSON Chronological Sorter</h1>
+    <p>Select a JSON file to sort by chronological order based on the "date" field:</p>
+    <input type="file" id="fileInput" />
+    <button onclick="sortChronologically()">Sort Chronologically</button>
+    <pre id="output"></pre>
+    <script>
+        function sortChronologically() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+            reader.onload = function () {
+                const data = JSON.parse(reader.result);
+                data.sort((a, b) => a.date - b.date);
+                const sortedData = JSON.stringify(data, null, 2);
+
+                const blob = new Blob([sortedData], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = 'sorted-data.json';
+                document.body.appendChild(a);
+                a.click();
+                URL.revokeObjectURL(url);
+            };
+            reader.readAsText(file);
+        }
+    </script>
+</body>
+
+</html>

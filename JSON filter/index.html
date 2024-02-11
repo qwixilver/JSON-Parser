@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JSON Filter</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js" integrity="sha512-a9NgEEK7tsCvABL7KqtUTQjl69z7091EVPpw5KxPlZ93T141ffe1woLtbXTX+r2/8TtTvRX/v4zTL2UlMUPgwg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js" integrity="sha512-pAoMgvsSBQTe8P3og+SAnjILwnti03Kz92V3Mxm0WOtHuA482QeldNM5wEdnKwjOnQ/X11IM6Dn3nbmvOz365g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+    <h1>JSON Filter</h1>
+    <p>Select a JSON file to filter:</p>
+    <input type="file" id="jsonFileInput" accept=".json" onchange="readJSON(this)"/>
+    <br>
+    <p>Enter text or regex to filter JSON data:</p>
+    <input type="text" id="filterInput" />
+    <br>
+    <button onclick="filterJSON()">Filter JSON</button>
+    <br>
+    <br>
+    <script src="JSONFilter.js"></script>
+</body>
+
+</html>
